@@ -2,7 +2,7 @@
 class Player {
     constructor(){
         this.width = 20;
-        this.heigth = 10;
+        this.height = 10;
         this.positionX = 40;
         this.positionY = 0;
 
@@ -13,7 +13,7 @@ class Player {
         playerElm.style.left = this.positionX + "vw"
         playerElm.style.bottom = this.positionY + "vh"
         playerElm.style.width = this.width + "vw"
-        playerElm.style.height = this.heigth + "vh"
+        playerElm.style.height = this.height + "vh"
     }
     moveLeft(){
         this.positionX--;
@@ -30,7 +30,7 @@ class Player {
 class Obstacle {
     constructor(){
         this.width = 20;
-        this.heigth = 10;
+        this.height = 10;
         this.positionX = 30;
         this.positionY = 100;
         this.obstacleElm = null;
@@ -52,7 +52,7 @@ class Obstacle {
         this.obstacleElm.style.left = this.positionX + "vw"
         this.obstacleElm.style.bottom = this.positionY + "vh"
         this.obstacleElm.style.width = this.width + "vw"
-        this.obstacleElm.style.height = this.heigth + "vh"
+        this.obstacleElm.style.height = this.height + "vh"
     }
     moveDown(){
         this.positionY--;
@@ -72,10 +72,23 @@ setInterval(() => {
 }, 3000);
 
 
-// move obstacles
+// update obstacles
 setInterval(() => {
     obstaclesArr.forEach((obstacleInstance, i, arr) => {
+
+        // move
         obstacleInstance.moveDown();
+
+        // detect collision
+        if (
+            player.positionX < obstacleInstance.positionX + obstacleInstance.width &&
+            player.positionX + player.width > obstacleInstance.positionX &&
+            player.positionY < obstacleInstance.positionY + obstacleInstance.height &&
+            player.positionY + player.height > obstacleInstance.positionY
+        ) {
+            console.log("gameover...")
+            location.href = "gameover.html"
+        }
     })
 }, 40)
 
