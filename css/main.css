@@ -1,3 +1,16 @@
 body {
-    background-color: #ddd;
+    margin: 0;
+    padding: 0;
+}
+
+#board {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: rgb(216, 197, 232);
+}
+
+#player {
+    background-color: rgb(222, 56, 164);
+    position: absolute;
 }
