@@ -31,7 +31,7 @@ class Obstacle {
     constructor(){
         this.width = 20;
         this.height = 10;
-        this.positionX = 30;
+        this.positionX = Math.floor(Math.random() * (100 - this.width + 1)); // generate a random number between 0 and (100-width)
         this.positionY = 100;
         this.obstacleElm = null;
 
@@ -69,7 +69,7 @@ const obstaclesArr = []; // will store instances of the class Obstacle
 setInterval(() => {
     const newObstacle = new Obstacle();
     obstaclesArr.push(newObstacle)
-}, 3000);
+}, 4000);
 
 
 // update obstacles
